@@ -80,6 +80,9 @@ Ubuntuにおけるインストールメモ
 		> ` sudo apt-get -y install nkf`
 		>
 		> ` sudo apt-get -y install convmv'
+	- wordcloudのインストール ` sudo pip3 install wordcloud`
+	    	- wordcloudの描画に必要なモジュールのインストール ` sudo apt-get install -y python3-tk`
+		- 日本語対応フォントのインストール ` sudo apt-get -y install fonts-ipafont-gothic`
 
 - Jupyter環境構築
     	- Jupyterのインストール ` sudo pip3 install jupyter`
