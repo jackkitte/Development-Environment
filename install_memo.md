@@ -76,6 +76,10 @@ Ubuntuにおけるインストールメモ
 			> ` dicdir = /usr/lib/mecab/dic/mecab-ipadic-neologd`
 	- python3向けのMecabバインディングのインストール ` sudo pip3 install mecab-python3`
 	- LDAを使うためにgensimをインストール ` sudo pip3 install gensim`
+	- sjiからのutf8エンコーディングを行うためのツールのインストール
+		> ` sudo apt-get -y install nkf`
+		>
+		> ` sudo apt-get -y install convmv'
 
 - Jupyter環境構築
     	- Jupyterのインストール ` sudo pip3 install jupyter`
