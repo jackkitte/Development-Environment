@@ -2,7 +2,7 @@
 # and Bourne compatible shells (bash(1), ksh(1), ash(1), ...).
 
 # システム全体の環境変数
-export http_proxy="http://172.17.120.88:8080/"
+export http_proxy="http://IPアドレス:ポート番号/"
 
 # CUDA Toolkitの環境変数設定
 export PATH=/usr/local/cuda-9.0/bin${PATH:+:${PATH}}
