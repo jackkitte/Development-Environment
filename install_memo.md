@@ -69,9 +69,9 @@ Ubuntuにおけるインストールメモ
 	- mecab-ipadic-NEologd辞書のインストール
 		> ` git clone --depth 1 https://github.com/neologd/mecab-ipadic-neologd.git`
 		>
-		> ` cd mecab-ipadic-neologd
+		> ` cd mecab-ipadic-neologd`
 		>
-		> ` ./bin/install-mecab-ipadic-neologd -n -a
+		> ` ./bin/install-mecab-ipadic-neologd -n -a`
 		- デフォルト辞書に設定 /etc/mecabrcを以下のように編集
 			> ` dicdir = /usr/lib/mecab/dic/mecab-ipadic-neologd`
 	- python3向けのMecabバインディングのインストール ` sudo pip3 install mecab-python3`
@@ -79,10 +79,38 @@ Ubuntuにおけるインストールメモ
 	- sjiからのutf8エンコーディングを行うためのツールのインストール
 		> ` sudo apt-get -y install nkf`
 		>
-		> ` sudo apt-get -y install convmv'
+		> ` sudo apt-get -y install convmv`
 	- wordcloudのインストール ` sudo pip3 install wordcloud`
-	    	- wordcloudの描画に必要なモジュールのインストール ` sudo apt-get install -y python3-tk`
+		- wordcloudの描画に必要なモジュールのインストール ` sudo apt-get install -y python3-tk`
 		- 日本語対応フォントのインストール ` sudo apt-get -y install fonts-ipafont-gothic`
+	- グラフ構造を描画するためのツールのインストール
+		> ` sudo apt-get -y install graphviz`
+		>
+		> ` sudo pip3 install graphviz`
+	- gensimの仕様でpython3.6以前を使ってると辞書配列がランダムのため、単語辞書とLDAモデルとの整合性がとれなくなるため、別で3.6をインストール
+		> ` sudo apt install build-essential checkinstall libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev openssl`
+		>
+		> ` mkdir -p $HOME/opt`
+		>
+		> ` cd $HOME/opt`
+		>
+		> ` curl -O https://www.python.org/ftp/python/3.6.0/Python-3.6.0rc2.tgz`
+		>
+		> ` tar -xzf Python-3.6.0rc2.tgz`
+		>
+		> ` cd Python-3.6.0rc2/`
+		>
+		> ` ./configure --enable-shared --prefix=/usr/local LDFLAGS="-Wl,--rpath=/usr/local/lib"`
+		>
+		> ` sudo make altinstall`
+		>
+		> ` python3.6 -V`
+		>
+		> ` >> Python 3.6.0rc2`
+		- ちみに上記のようにインストールするとpython3.6に対応したpipとsetup-toolsも一緒に入る
+			> ` pip3.6 -V`
+			>
+			> ` >> pip 9.0.1 from /usr/local/lib/python3.6/site-packages (python 3.6)`
 
 - Jupyter環境構築
     	- Jupyterのインストール ` sudo pip3 install jupyter`
@@ -128,9 +156,9 @@ Ubuntuにおけるインストールメモ
 			>
                         > WantedBy = multi-user.target
 		- 起動時に実行するように設定
-			> ` systemctl enable jupyter-notebook
+			> ` systemctl enable jupyter-notebook`
 			>
-			> ` systemctl start jupyter-notebook
+			> ` systemctl start jupyter-notebook`
 	- Jupyterにextensionを追加 
 		> ` sudo pip3 install jupyter_contrib_nbextensions`
 		>
