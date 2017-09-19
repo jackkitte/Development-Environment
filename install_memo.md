@@ -175,3 +175,10 @@ Ubuntuにおけるインストールメモ
 			> ` sudo pip3 install --upgrade jupyterthemes`
 			>
 			> ` jt -t oceans16 -vim -cellw 1600 -T -N`
+
+- 深層学習環境
+    - TensorFlowのインストール
+        > ` sudo apt-get -y install libcupti-dev`
+        >
+        > ` sudo pip3.6 install tensorflow-gpu`
+        >
