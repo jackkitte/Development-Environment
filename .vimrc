@@ -3,11 +3,11 @@ if has('vim_starting')
 	if &compatible
 		set nocompatible
 	endif
-	set runtimepath+=/home/tamashiro/.vim/bundle/neobundle.vim
+	set runtimepath+=/home/ユーザー名/.vim/bundle/neobundle.vim
 endif 
 
 "NeoBundle設定の開始"
-call neobundle#begin(expand('/home/tamashiro/.vim/bundle'))
+call neobundle#begin(expand('/home/ユーザー名/.vim/bundle'))
 
 "NeoBundleのバージョンをNeoBundle自身で管理する"
 NeoBundleFetch 'Shougo/neobundle.vim'
