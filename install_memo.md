@@ -85,35 +85,35 @@ Ubuntuにおけるインストールメモ
 		- 日本語対応フォントのインストール ` sudo apt-get -y install fonts-ipafont-gothic`
 	- グラフ構造を描画するためのツールのインストール
 		> ` sudo apt-get -y install graphviz`
-		>
-		> ` sudo pip3 install graphviz`
-	- gensimの仕様でpython3.6以前を使ってると辞書配列がランダムのため、単語辞書とLDAモデルとの整合性がとれなくなるため、別で3.6をインストール
-		> ` sudo apt install build-essential checkinstall libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev openssl`
-		>
-		> ` mkdir -p $HOME/opt`
-		>
-		> ` cd $HOME/opt`
-		>
-		> ` curl -O https://www.python.org/ftp/python/3.6.0/Python-3.6.0rc2.tgz`
-		>
-		> ` tar -xzf Python-3.6.0rc2.tgz`
-		>
-		> ` cd Python-3.6.0rc2/`
-		>
-		> ` ./configure --enable-shared --prefix=/usr/local LDFLAGS="-Wl,--rpath=/usr/local/lib"`
-		>
-		> ` sudo make altinstall`
-		>
-		> ` python3.6 -V`
-		>
-		> ` >> Python 3.6.0rc2`
-		- ちみに上記のようにインストールするとpython3.6に対応したpipとsetup-toolsも一緒に入る
-			> ` pip3.6 -V`
-			>
-			> ` >> pip 9.0.1 from /usr/local/lib/python3.6/site-packages (python 3.6)`
+        >
+       	> ` sudo pip3 install graphviz`
+    - gensimの仕様でpython3.6以前を使ってると辞書配列がランダムのため、単語辞書とLDAモデルとの整合性がとれなくなるため、別で3.6をインストール
+    	> ` sudo apt install build-essential checkinstall libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev openssl`
+    	>
+    	> ` mkdir -p $HOME/opt`
+    	>
+    	> ` cd $HOME/opt`
+    	>
+    	> ` curl -O https://www.python.org/ftp/python/3.6.0/Python-3.6.0rc2.tgz`
+    	>
+    	> ` tar -xzf Python-3.6.0rc2.tgz`
+    	>
+    	> ` cd Python-3.6.0rc2/`
+    	>
+    	> ` ./configure --enable-shared --prefix=/usr/local LDFLAGS="-Wl,--rpath=/usr/local/lib"`
+    	>
+    	> ` sudo make altinstall`
+    	>
+    	> ` python3.6 -V`
+    	>
+    	> ` >> Python 3.6.0rc2`
+    	- ちみに上記のようにインストールするとpython3.6に対応したpipとsetup-toolsも一緒に入る
+    		> ` pip3.6 -V`
+    		>
+    		> ` >> pip 9.0.1 from /usr/local/lib/python3.6/site-packages (python 3.6)`
 
 - Jupyter環境構築
-    	- Jupyterのインストール ` sudo pip3 install jupyter`
+    - Jupyterのインストール ` sudo pip3 install jupyter`
 	- Jupyterへのログイン時に用いるパスワードの生成
 		> ` python3`
 		>
@@ -128,33 +128,33 @@ Ubuntuにおけるインストールメモ
 		>
 		> c.NotebookApp.password = 'passwd()でハッシュされて生成されたパスワードを記載'
 		>
-		> c.NotebookApp.port = ポート番号
+		> c.NotebookApp.port = 30000
 	- systemdでJupyterをサービス化
 		- Unit定義ファイルを作成 ` sudo vim /etc/systemd/system/jupyter-notebook.service`
 		- Unit定義ファイルの編集
 			> [Unit]
 			>
-                        > Description = Jupyter Notebook
-                        > 
-                        > [Service]
+            > Description = Jupyter Notebook
+            > 
+            > [Service]
 			>
-                        > Type=simple
+            > Type=simple
 			>
-                        > PIDFile=/var/run/jupyter-notebook.pid
+            > PIDFile=/var/run/jupyter-notebook.pid
 			>
-                        > ExecStart=/usr/local/bin/jupyter notebook
+            > ExecStart=/usr/local/bin/jupyter notebook
 			>
-                        > WorkingDirectory=/home/tamashiro/jupyter_notebook
+            > WorkingDirectory=/home/ユーザー名/jupyter_notebook
 			>
-                        > User=tamashiro
+            > User=ユーザー名
 			>
-                        > Group=tamashiro
+            > Group=ユーザー名
 			>
-                        > Restart=always
-                        > 
-                        > [Install]
+            > Restart=always
+            > 
+            > [Install]
 			>
-                        > WantedBy = multi-user.target
+            > WantedBy = multi-user.target
 		- 起動時に実行するように設定
 			> ` systemctl enable jupyter-notebook`
 			>
