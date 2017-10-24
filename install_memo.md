@@ -14,6 +14,12 @@ Ubuntuにおけるインストールメモ
 	5. .vim内にbundleディレクトリを作成し、NeoBundle用のソースをGitHubからクローン
 	6. .vimrcにNeoBundle用の設定を追記
 
+- Markdown環境の設定
+    1. pandocのインストール : Pandocのウェブページ(http://pandoc.org/)より、pandoc-1.17.0.2-1-amd64.deb(最新版) をダウンロード
+        > ` sudo dpkg -i pandoc-1.17.0.2-1-amd64.deb`
+    1. pandocでmarkdownからPDFを生成するためにTeX環境が必要ですので、aptを使ってTeXLive 等をインストール
+        > ` sudo apt install texlive texlive-lang-cjk texlive-luatex texlive-xetex`
+
 - sshdの設定
 	- ポートの変更は/etc/ssh/sshd_configを以下のように編集
 		> ` Port ポート番号`
