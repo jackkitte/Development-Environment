@@ -1,24 +1,28 @@
-"起動時にruntimepathにNeoBundleのパスを追加する
-if has('vim_starting')
-	if &compatible
-		set nocompatible
-	endif
-	set runtimepath+=/home/ユーザー名/.vim/bundle/neobundle.vim
-endif 
+if &compatible
+ set nocompatible
+endif
+" Add the dein installation directory into runtimepath
+set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
-"NeoBundle設定の開始"
-call neobundle#begin(expand('/home/ユーザー名/.vim/bundle'))
+if dein#load_state('~/.cache/dein')
+ call dein#begin('~/.cache/dein')
 
-"NeoBundleのバージョンをNeoBundle自身で管理する"
-NeoBundleFetch 'Shougo/neobundle.vim'
+ call dein#add('~/.cache/dein')
+ call dein#add('Shougo/deoplete.nvim')
+ call dein#add('kannokanno/previm')
+ call dein#add('plasticboy/vim-markdown')
+ call dein#add('tyru/open-browser.vim')
+ if !has('nvim')
+   call dein#add('roxma/nvim-yarp')
+   call dein#add('roxma/vim-hug-neovim-rpc')
+ endif
 
-"vimでmarkdownをリアルタイムプレビューする方法"
-NeoBundle 'plasticboy/vim-markdown'
-NeoBundle 'kannokanno/previm'
-NeoBundle 'tyru/open-browser.vim'
+ call dein#end()
+ call dein#save_state()
+endif
 
-"NeoBundle設定の終了"
-call neobundle#end()
+filetype plugin indent on
+syntax enable
 
 "シンタックスハイライトの設定"
 syntax on
@@ -42,9 +46,9 @@ set laststatus=2
 "「Tab」を「スペース」に置き換える
 setl expandtab
 "「Tab」の「インデント幅」を4にする
-setl tabstop=4
+setl tabstop=2
 "自動インデントした時の「インデント幅」を4にする
-setl shiftwidth=4
+setl shiftwidth=2
 "キーバインドの「Tab」キーを押した時のスペースの数
 "0 を設定すると「tabstop」で設定された数のスペースが挿入される
 setl softtabstop=0
