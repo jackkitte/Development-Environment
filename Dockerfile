@@ -67,4 +67,5 @@ RUN conda install -c conda-forge jpeg
 
 
 RUN mkdir /home/tamash/work
+WORKDIR /home/tamash/work
 ENTRYPOINT [ "/bin/zsh" ]
