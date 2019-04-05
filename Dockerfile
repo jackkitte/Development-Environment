@@ -1,10 +1,10 @@
 FROM ubuntu:latest
-MAINTAINER tamash
+LABEL maintainer="tamash"
 
 # パッケージのインストールとアップデート
 RUN apt-get update && apt-get -y upgrade
 RUN apt-get -y install build-essential
-RUN apt-get -y install git vim curl wget zsh sudo
+RUN apt-get -y install git vim curl wget zsh sudo lsof
 RUN apt-get -y install language-pack-ja-base language-pack-ja
 RUN apt-get -y install mecab libmecab-dev mecab-ipadic mecab-ipadic-utf8
 RUN apt-get -y install zlib1g-dev \
@@ -25,6 +25,7 @@ ENV LC_CTYPE ja_JP.UTF-8
 
 # ユーザーの追加
 RUN useradd -m -d /home/tamash -s /bin/zsh -G sudo tamash
+RUN echo 'root:root' | chpasswd
 RUN echo 'tamash:tamash' | chpasswd
 RUN echo 'tamash ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 ENV HOME /home/tamash
@@ -68,4 +69,5 @@ RUN conda install -c conda-forge jpeg
 
 RUN mkdir /home/tamash/work
 WORKDIR /home/tamash/work
+EXPOSE 3000
 ENTRYPOINT [ "/bin/zsh" ]
